@@ -1,1 +1,18 @@
-{ //package.json - Dependencies (Three.js, Vite), scripts (dev, build).}
+{
+  "name": "boat-game",
+  "version": "1.0.0",
+  "description": "3D boat game using Three.js",
+  "main": "start.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.158.0"
+  },
+  "devDependencies": {
+    "vite": "^4.5.0"
+  }
+}
