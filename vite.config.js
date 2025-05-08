@@ -1,18 +1,12 @@
-//vite.config.js - Vite config: server, build, options.
-
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
 
 export default defineConfig({
-  server: {
-    open: true
-  },
-  build: {
-    assetsDir: 'assets',
-    outDir: 'dist'
-  },
-  resolve: {
-    alias: {
-      'three': 'three'
-    }
-  }
-});
+    base: '/team-projects-liam-lincoln/dist/', // This is important for GitHub Pages deployment
+    build: {
+        outDir: 'dist', // Output directory for build files
+        emptyOutDir: true // Clean the output directory before building
+    },
+    optimizeDeps: {
+        include: ['three']
+    },
+})

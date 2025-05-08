@@ -1,53 +1,70 @@
-# Riverboat Game
+# Interactive 3D River Scene
 
-A simple 3D web game built with Three.js, Vite, and Blender.
+A dynamic 3D scene featuring an interactive river environment with a rowing boat, animated water, and realistic terrain.
 
-## Project Structure
+## Live Demo
+[View the Live Demo](https://gu-computer-graphics-25.github.io/team-projects-liam-lincoln/)
 
-- `blender/`: Blender files.
-  - `assets/`: Models (.blend).
-  - `chunks/`: Terrain chunks (.blend).
-  - `materials/`: Materials (.blend).
-  - `scripts/`: Python scripts (`export_chunks.py`).
-- `src/`: JavaScript code.
-  - `shaders/`: GLSL shaders (.vert, .frag).
-  - `systems/`: Game logic (e.g., `ChunkManager.js`, `Water.js`).
-  - `utils/`: Utilities (e.g., `disposers.js`).
-  - `components/`: Reusable components (`BoatController.js`).
-  - `main.js`: Entry point.
-  - `style.css`: Stylesheet.
-- `assets/`: Source *and* exported assets.
-  - `models/`: Exported glTF.
-    - `chunks/`: glTF/glb terrain chunks.
-    - `characters/`: glTF models (boat, coin).
-  - `textures/`: *Source* textures.
-     - `water/`
-     - `environment/`
-     - `characters/`
-- `index.html`: Main HTML.
-- `package.json`: npm configuration.
-- `package-lock.json`: npm lockfile.
-- `vite.config.js`: Vite configuration.
+## Implemented Features
 
-## Getting Started
+### Material, Lighting, and Shading
+- Custom water shader with dynamic patterns
+- Ambient and directional lighting system
+- Proper material properties for all scene elements
+- Sky box environment and Z buffer fog
 
-1.  **Install:** `npm install`
-2.  **Dev Server:** `npm run dev` (usually at `http://localhost:5173`).
-3.  **Build:** `npm run build` (output in `dist/`).
-4.  **Deploy:** Copy `dist/` to your server.
+### Camera System
+- Overhead view: Provides top-down perspective
+- Third-person view: Dynamic camera positioning
+- Automatic camera adjustments based on boat movement
 
-## Blender Workflow
+### Textures and Texture Mapping
+- Dynamic shader-based water textures
+- Imported terrain textures from Blender
+- Proper UV mapping implementation
+- Procedural texture generation for water effects
+- texture mapped wood jpg texture onto boat object
 
-1.  **Assets:** Create in `blender/assets/`.
-2.  **Chunks:** Create in `blender/chunks/` (name: `biome_x_z.blend`).
-3.  **Gradients:** Set up in `blender/materials/gradient_materials.blend`.
-4.  **Export:** Use `blender/scripts/export_chunks.py` (needs `gltf-transform`). Exports `.glb` to `assets/models/chunks/` and `.basis` textures.
-5.  **Textures:** Originals in `assets/textures/`.
+### User Interaction
+- WASD/Arrow key controls for boat navigation
+- Realistic movement
+- Collision detection system
+- GUI controls for:
+  - Camera view selection
+- Responsive input handling
 
-## Three.js Development
+### Animation System
+- Speed-synchronized rowing arm animations
+- Dynamic water surface movement
+- Smooth boat motion
+- Frame-rate independent animations
 
--   Edit JavaScript in `src/`.
--   Vites HMR applies changes.
--   Edit `chunkGrid` in `main.js` for level layout.
--   New chunks load dynamically (no server restart needed *unless* `chunkGrid` changes).
+### Modeling
+- Procedurally generated models:
+  - Water surface
+- Basic THREE.js models:
+  - trees
+  - Boat structure
+  - Character model
+- Imported Blender models:
+  - Terrain mesh
+  - Water mesh
+- Proper scaling and positioning
+- Optimized model loading and rendering (GPU mesh instance)
+
+## Technical Implementation
+
+The project is built using:
+- Three.js for 3D rendering
+- GLTFLoader for model loading
+- Custom shaders for water animation
+- dat.GUI for interface controls
+- Vite for development and building
+
+## Resources
+
+- [Three.js Documentation](https://threejs.org/docs/)
+- [GLTFLoader Documentation](https://threejs.org/docs/#examples/en/loaders/GLTFLoader)
+- [dat.GUI Documentation](https://github.com/dataarts/dat.gui)
+- [Vite Documentation](https://vitejs.dev/)
 

@@ -1,1 +1,0 @@
-This directory stores terrain chunk .blend files. Each file represents a section of the game world. Use a naming convention like biome_x_z.blend (e.g., jungle_0_0.blend, desert_-1_0.blend). 'x' and 'z' are integer coordinates. Ensure the origin of each chunk is at its bottom center.
