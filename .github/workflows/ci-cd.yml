@@ -1,0 +1,30 @@
+name: Build and Deploy Three.js Game
+
+on:
+  push:
+    tags:
+      - 'v*' # Only trigger on tag pushes starting with 'v'
+  workflow_dispatch: # Allow manual triggering
+
+
+jobs:
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+
+
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          publish_dir: ./dist # Assuming the build output is in the 'dist' directory
