@@ -10,8 +10,8 @@ import { Sky } from 'three/examples/jsm/objects/Sky.js';
 
 
 // --- Configuration ---
-const terrainScale = 10;
-const WATER_LEVEL_Y = -17.0; // <<< Using level from Sky/Current version >>>
+export const terrainScale = 10;
+export const WATER_LEVEL_Y = -17.0; // <<< Using level from Sky/Current version >>>
 const patternScaleFactor = 1.0; // Initial pattern scale
 const waterTimeScaleFactor = 1.2; // <<< SET FIXED WATER ANIMATION SPEED >>>
 const waterAlpha = 0.85; // <<< Set desired base water transparency (0.0 to 1.0) >>>
@@ -21,10 +21,10 @@ const cameraLerpFactor = 0.08;
 const thirdPersonOffset = new THREE.Vector3(0, 15, 30); // Third-person camera offset
 // Boat Physics
 const boatScale = 2.0; // <<< REVERTED Boat scale back to original size >>>
-const maxSpeed = 15.0 * terrainScale / 10;
-const accelerationRate = 10.0 * terrainScale / 10;
+export const maxSpeed = 15.0 * terrainScale / 10;
+export const accelerationRate = 10.0 * terrainScale / 10;
 const decelerationRate = 8.0 * terrainScale / 10;
-const turnRate = 1.0 * Math.PI / 180 * 60; // Radians per second
+export const turnRate = 1.0 * Math.PI / 180 * 60; // Radians per second
 // Collision
 const collisionCheckDistance = 5.0 * boatScale; // How far ahead to check for collision (scales with boat)
 const collisionDamping = 0.2; // Factor to reduce speed on collision (e.g., 0.2 = 80% reduction)

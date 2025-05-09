@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite'
 // import react from '@vitejs/plugin-react' // Removed React plugin
 
@@ -12,6 +13,8 @@ export default defineConfig({
         // Removed rollupOptions for externalizing three
     },
     // plugins: [react()], // Removed React plugin
+    test: {
+        globals: true,
+        environment: 'jsdom',
+    }
 })
-
-

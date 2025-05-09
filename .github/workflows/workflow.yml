@@ -44,6 +44,12 @@ jobs:
           npm audit fix --audit-level=moderate
           npm audit --audit-level=moderate
 
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+
       - name: Build
         run: npm run build
 
