@@ -18,13 +18,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build Project
-        run: npm run build
-
-
-
+      - name: Build
+        run: npm run build && sed -i 's/<script src="js\/three.js">/<script type="module" src="js\/three.js">/g' dist/index.html && sed -i 's/<script src="js\/tw.js">/<script type="module" src="js\/tw.js">/g' dist/index.html && sed -i 's/<script src="js\/OrbitControls.js">/<script type="module" src="js\/OrbitControls.js">/g' dist/index.html && sed -i 's/<script src="js\/dat.gui.js">/<script type="module" src="js\/dat.gui.js">/g' dist/index.html && sed -i 's/<script src="js\/SceneUtils.js">/<script type="module" src="js\/SceneUtils.js">/g' dist/index.html
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_PAT }}
-          publish_dir: ./dist # Assuming the build output is in the 'dist' directory
+          publish_dir: ./dist
