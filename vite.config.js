@@ -3,6 +3,9 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
     base: '/boat-game/', // Set base path for GitHub Pages
+    optimizeDeps: {
+        include: ['three'],
+    },
     build: {
         outDir: 'dist', // Output directory for build files
         emptyOutDir: true, // Clean the output directory before building
