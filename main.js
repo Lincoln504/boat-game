@@ -1,10 +1,10 @@
 import * as THREE from 'three';
 
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import * as dat from 'dat.gui';
 
-import { Sky } from 'three/addons/objects/Sky.js';
+import { Sky } from 'three/examples/jsm/objects/Sky.js';
 
 
 
