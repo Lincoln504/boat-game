@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "this projects demosntrates using node.js with threeks and textures",
   "main": "main.js",
+  "type": "module",
   "scripts": {
     "build": "vite build",
     "test": "vitest run",

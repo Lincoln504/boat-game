@@ -725,7 +725,7 @@ function render() {
             if (currentSpeed > 0.01) {
                 boat.getWorldQuaternion(boatWorldQuaternion);
                 const worldBoatForward = boatForward.clone().applyQuaternion(boatWorldQuaternion).normalize();
-                let collisionDetected = false;
+                // let collisionDetected = false; // Unused variable
 
                 for (const point of rayCheckPoints) {
                     worldRayOrigin.copy(point).applyMatrix4(boat.matrixWorld);
@@ -747,7 +747,7 @@ function render() {
                         proposedDisplacementZ = 0; // Prevent penetration
                         currentSpeed *= collisionDamping; // Damp speed
                         boat.position.addScaledVector(collisionNormal, collisionNudge); // Nudge away
-                        collisionDetected = true;
+                        // collisionDetected = true; // Unused variable
                         break; // Stop checking after first hit
                     }
                 }

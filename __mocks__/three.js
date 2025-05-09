@@ -8,7 +8,7 @@ export class WebGLRenderer {
   setSize() {}
   setPixelRatio() {}
   render() {}
-  setAnimationLoop(callback) {
+  setAnimationLoop(_callback) {
     // In a real test environment, you might want to control the execution of this callback
     // For now, just acknowledge it.
     console.log('Mock WebGLRenderer.setAnimationLoop called');
@@ -156,7 +156,7 @@ export class Object3D {
   getWorldPosition(target) { return target.copy(this.position); }
   getWorldQuaternion(target) { return target.copy(this.quaternion); }
   applyMatrix4() {}
-  applyQuaternion(q) { this.quaternion.multiply(q); return this; } // Simplified
+  applyQuaternion(_q) { this.quaternion.multiply(_q); return this; } // Simplified
   traverse(callback) {
     callback(this);
     this.children.forEach(child => {
@@ -291,7 +291,7 @@ export class Box3 {
 
 // --- Loaders ---
 export class TextureLoader {
-  load(url, onLoad, onProgress, onError) {
+  load(url, onLoad, _onProgress, _onError) {
     console.log(`Mock TextureLoader: loading ${url}`);
     // Simulate async loading and call onLoad if provided
     if (onLoad) {
@@ -318,18 +318,18 @@ export class Vector3 {
   copy(v) { this.x = v.x; this.y = v.y; this.z = v.z; return this; }
   add(v) { this.x += v.x; this.y += v.y; this.z += v.z; return this; }
   addScaledVector(v, s) { this.x += v.x * s; this.y += v.y * s; this.z += v.z * s; return this; }
-  applyQuaternion(q) { /* simplified */ return this; }
+  applyQuaternion(_q) { /* simplified */ return this; }
   clone() { return new Vector3(this.x, this.y, this.z); }
   normalize() { return this; }
-  transformDirection(m) { /* simplified */ return this; }
+  transformDirection(_m) { /* simplified */ return this; }
   lengthSq() { return this.x * this.x + this.y * this.y + this.z * this.z; }
   multiplyScalar(s) { this.x *= s; this.y *= s; this.z *= s; return this; }
-  setFromSphericalCoords(radius, phi, theta) { /* simplified */ return this; }
+  setFromSphericalCoords(_radius, _phi, _theta) { /* simplified */ return this; }
 }
 export class Quaternion {
   constructor(x = 0, y = 0, z = 0, w = 1) { this.x = x; this.y = y; this.z = z; this.w = w; }
   copy(q) { this.x = q.x; this.y = q.y; this.z = q.z; this.w = q.w; return this; }
-  multiply(q) { /* simplified */ return this; }
+  multiply(_q) { /* simplified */ return this; }
   // Add other methods if your code uses them (e.g., setFromEuler, slerp)
 }
 export class Color {
@@ -399,14 +399,14 @@ export class Raycaster {
     this.ray.origin.copy(origin);
     this.ray.direction.copy(direction);
   }
-  intersectObject(object, recursive) {
+  intersectObject(_object, _recursive) {
     // Basic mock: return an empty array or a mock intersection if needed for tests
     console.log('Mock Raycaster.intersectObject called');
     // Example mock intersection:
-    // return [{ distance: 1, point: new Vector3(), object: object, face: { normal: new Vector3(0,1,0) } }];
+    // return [{ distance: 1, point: new Vector3(), object: _object, face: { normal: new Vector3(0,1,0) } }];
     return [];
   }
-  intersectObjects(objects, recursive) {
+  intersectObjects(_objects, _recursive) {
     console.log('Mock Raycaster.intersectObjects called');
     return [];
   }
@@ -456,7 +456,7 @@ export class Fog {
 // Vitest typically handles this, but as a fallback or for clarity:
 export const GLTFLoader = class {
   setDRACOLoader() {}
-  load(url, onLoad, onProgress, onError) {
+  load(url, onLoad, _onProgress, _onError) {
     console.log(`Mock GLTFLoader: loading ${url}`);
     if (onLoad) {
       setTimeout(() => onLoad({ scene: new Scene() }), 0); // Return a mock scene
