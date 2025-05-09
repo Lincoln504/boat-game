@@ -1,9 +1,11 @@
 name: Build and Deploy
 
 on:
+  workflow_dispatch: # Allows manual triggering
   push:
     branches:
       - main
+      - '*' # Reverted to include all branches for now
 permissions:
   contents: write
   pages: write
