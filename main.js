@@ -117,7 +117,7 @@ const guiState = {
 let timeAccumulator = 0;
 
 // Define camera parameters (placeholders, real values set after load)
-var cameraParams = {
+const cameraParams = {
     near: 0.1, far: 500000, // <<< Increased Far plane significantly for large sky (from Sky snippet) >>>
     fov: 75, aspectRatio: window.innerWidth / window.innerHeight,
     atX: 0, atY: WATER_LEVEL_Y, atZ: 0, eyeX: 0, eyeY: 50, eyeZ: 50,
@@ -331,10 +331,10 @@ const treeInstancesPromise = new Promise((resolve, reject) => {
 // -----------------------------
 // Add Lights to the Scene (Setup before Promise.all)
 // -----------------------------
-var ambLight = new THREE.AmbientLight(0xffffff, dayAmbientIntensity); // Soft ambient fill light (using constant from Sky snippet)
+const ambLight = new THREE.AmbientLight(0xffffff, dayAmbientIntensity); // Soft ambient fill light (using constant from Sky snippet)
 scene.add(ambLight);
 // Directional light to simulate the sun (position/target updated by updateSkyAndSun)
-var sunLight = new THREE.DirectionalLight(0xffffff, daySunIntensity); // Using constant from Sky snippet
+const sunLight = new THREE.DirectionalLight(0xffffff, daySunIntensity); // Using constant from Sky snippet
 sunLight.castShadow = true;
 scene.add(sunLight);
 scene.add(sunLight.target); // Add target to scene explicitly
@@ -773,20 +773,20 @@ function render() {
                 const bladeAngle = Math.abs(dipPhase) * 0.5 * animIntensity; // Oar blade rotation (feathering) - Use dipPhase
 
                 // Left arm and oar
-                leftUpperArmRef.rotation.x = baseArmAngle + rowingAngle;
+                leftUpperArmRef.rotation.x = baseArmAngle - rowingAngle;
                 leftUpperArmRef.rotation.z = Math.PI / 6 - forwardAngle; // Base outward angle + forward reach twist
                 // Oar follows arm with additional blade rotation
-                leftOarRef.rotation.x = baseArmAngle + rowingAngle;
+                leftOarRef.rotation.x = baseArmAngle - rowingAngle;
                 leftOarRef.rotation.z = Math.PI / 6 - forwardAngle;
                 leftOarRef.rotation.y = -bladeAngle; // Feathering rotation
                 // Adjust oar Y position dynamically based on hand movement (simplified) using the corrected base Y
                 leftOarRef.position.y = oarPivotY + Math.sin(time) * 0.1 * animIntensity; // Use oarPivotY + vertical oscillation
 
                 // Right arm and oar
-                rightUpperArmRef.rotation.x = baseArmAngle + rowingAngle;
+                rightUpperArmRef.rotation.x = baseArmAngle - rowingAngle;
                 rightUpperArmRef.rotation.z = -Math.PI / 6 + forwardAngle; // Base outward angle + forward reach twist
                 // Oar follows arm with additional blade rotation
-                rightOarRef.rotation.x = baseArmAngle + rowingAngle;
+                rightOarRef.rotation.x = baseArmAngle - rowingAngle;
                 rightOarRef.rotation.z = -Math.PI / 6 + forwardAngle;
                 rightOarRef.rotation.y = bladeAngle; // Feathering rotation
                 // Adjust oar Y position dynamically based on hand movement (simplified) using the corrected base Y
