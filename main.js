@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-window.THREE = THREE; // Expose THREE globally for tw.js
+// window.THREE = THREE; // No longer needed as tw.js is removed
 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';

@@ -23,8 +23,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Specify your desired Node.js version (e.g., LTS)
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm # Path to cache (npm stores its cache here)
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install Dependencies
-        run: npm install
+        run: npm ci # Use 'npm ci' for cleaner installs in CI, relies on package-lock.json
 
       - name: Build
         run: npm run build
