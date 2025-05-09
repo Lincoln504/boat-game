@@ -3,7 +3,7 @@
 A dynamic 3D scene featuring an interactive river environment with a rowing boat, animated water, and realistic terrain.
 
 ## Live Demo
-[View the Live Demo](https://gu-computer-graphics-25.github.io/team-projects-liam-lincoln/)
+[View the Live Demo](https://lincoln504.github.io/boat-game/)
 
 ## Implemented Features
 
@@ -67,4 +67,3 @@ The project is built using:
 - [GLTFLoader Documentation](https://threejs.org/docs/#examples/en/loaders/GLTFLoader)
 - [dat.GUI Documentation](https://github.com/dataarts/dat.gui)
 - [Vite Documentation](https://vitejs.dev/)
-
