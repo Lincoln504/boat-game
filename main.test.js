@@ -1,5 +1,50 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import * as THREE from 'three'; // For type checking if needed
+
+// Mock the 'three' module
+vi.mock('three');
+
+// Mock global document properties before main.js is imported
+// This ensures that when main.js runs `document.body.appendChild`, it uses our mock.
+const mockDocument = {
+  body: {
+    appendChild: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    // Add any other properties of `body` that main.js might access during setup
+    style: {}, // Example: if main.js accessed document.body.style
+  },
+  addEventListener: vi.fn(),
+  removeEventListener: vi.fn(),
+  createElement: vi.fn((tagName) => ({ // Mock createElement to return a basic element-like object
+    tagName: tagName.toUpperCase(),
+    style: {},
+    appendChild: vi.fn(),
+    removeChild: vi.fn(),
+    setAttribute: vi.fn(),
+    removeAttribute: vi.fn(),
+    hasAttribute: vi.fn(() => false),
+    getAttribute: vi.fn(() => null),
+    childNodes: [],
+    nodeType: 1, // Node.ELEMENT_NODE
+    ownerDocument: global.document, // Will be replaced by the stubbed global
+  })),
+  getElementById: vi.fn(() => null),
+  // Add any other properties of `document` that main.js might access
+};
+vi.stubGlobal('document', mockDocument);
+
+// Also mock window.innerWidth/Height as main.js uses them for aspect ratio
+const mockWindow = {
+  innerWidth: 1024,
+  innerHeight: 768,
+  addEventListener: vi.fn(),
+  removeEventListener: vi.fn(),
+  // Add other window properties if needed
+};
+vi.stubGlobal('window', mockWindow);
+
+
 import {
     terrainScale,
     WATER_LEVEL_Y,

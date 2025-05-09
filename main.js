@@ -98,6 +98,8 @@ let boundaryMesh; // For collision detection
 let waterMesh; // Reference to the loaded water mesh
 let sky; // <<< ADDED Reference to the Sky object >>>
 let sun; // <<< ADDED Vector3 representing sun direction for Sky and DirectionalLight >>>
+// Declare materials earlier so texture loader callback doesn't cause ReferenceError in tests
+let raftSideMaterial, raftTopMaterial;
 // Animation Refs
 let leftUpperArmRef, rightUpperArmRef;
 let leftOarRef, rightOarRef;
@@ -193,14 +195,14 @@ function createRaftBufferGeometry() {
 // -----------------------------
 // [2025-02-28] Keep all the comments that were there in the original files.
 boat = new THREE.Object3D(); boat.name = "boat";
-const raftSideMaterial = new THREE.MeshStandardMaterial({ 
+raftSideMaterial = new THREE.MeshStandardMaterial({ 
     map: woodTexture,
     metalness: 0.2, 
     roughness: 0.8, 
     side: THREE.DoubleSide,
     color: 0xffffff // Use white as base color to not interfere with texture
 });
-const raftTopMaterial = new THREE.MeshStandardMaterial({ 
+raftTopMaterial = new THREE.MeshStandardMaterial({ 
     map: woodTexture,
     metalness: 0.2, 
     roughness: 0.7, 
